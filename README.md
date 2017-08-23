@@ -607,8 +607,33 @@ public class FileUploadDao {
 	<url-pattern>/</url-pattern>
 </servlet-mapping>
 ```
+## if we want to download multiple file then under function through we can download
+```
+var links = [
+  'https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.exe',
+  'https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.dmg',
+  'https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar'
+];
 
+function downloadAll(urls) {
+  var link = document.createElement('a');
 
+  link.setAttribute('download', null);
+  link.style.display = 'none';
+
+  document.body.appendChild(link);
+
+  for (var i = 0; i < urls.length; i++) {
+    link.setAttribute('href', urls[i]);
+    link.click();
+  }
+
+  document.body.removeChild(link);
+}
+
+And html code is 
+<button onclick="downloadAll(window.links)">Test me!</button>
+```
 ## Meta
 
 Pratik Joshi - pratik.joshi7859@gmail.com
